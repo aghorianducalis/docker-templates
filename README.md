@@ -7,6 +7,63 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# Docker setup
+
+## Installation
+To use this template, you must have [Docker](https://docs.docker.com/get-started/docker-overview/) installed.
+Assuming you are using nginx on your local machine, there should be nginx server configured with name docker-simple.local.
+
+### Ubuntu
+Add the following line to /etc/hosts:
+```shell
+127.0.0.1	docker-simple.local
+```
+
+## Usage
+Run the following commands to build and start your containers:
+```shell
+docker compose up -d --build
+```
+
+## Simple PHP script
+Application on PHP 8.3, nginx.
+Contains the configuration for running the simplest index.php from Docker container.
+
+Accessing the PHP (app) container via Shell:
+```shell
+docker exec -it laravel-app-php bash
+```
+
+When visiting http://docker-simple.local:8082/ you should see the PHP 8.3 info page.
+
+## Docker
+
+### File structure
+```text
+project-root/
+├── app/
+├── bootstrap/
+├── config/
+├── database/
+├── docker/
+│   ├── nginx/
+│   │   └── nginx.conf
+│   ├── php/
+│   │   └── Dockerfile
+├── public/
+├── resources/
+├── routes/
+├── storage/
+├── tests/
+├── .env
+└── docker-compose.yml
+```
+
+### Run server
+```shell
+php artisan serve --host=docker-simple.local --port=8082
+```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
